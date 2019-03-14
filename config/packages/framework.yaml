@@ -19,3 +19,6 @@ framework:
     #FOS Configuration
     templating:
         engines: ['twig', 'php']
+
+    translator:
+        enabled: true

@@ -1,0 +1,6 @@
+@mixin box ($color, $size) {
+  border-radius: 3px;
+  padding: 20px;
+  background-color: $color;
+  width: $size;
+}

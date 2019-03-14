@@ -4,9 +4,8 @@ use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Mapping\ClassMetadata;
 use Symfony\Component\Validator\Constraints\NotBlank;
 /**
- * @ORM\Entity(repositoryClass="\Entity\Repository\CommentRepository")
+ * @ORM\Entity(repositoryClass="App\Entity\UserRepository")
  * @ORM\Table(name="comment")
- * @ORM\HasLifecycleCallbacks
  */
 class Comment
 {
@@ -33,14 +32,13 @@ class Comment
     /**
      * @ORM\Column(type="text")
      */
-    protected $comment;
+    protected $comments;
     /**
      * @ORM\Column(type="boolean")
      */
     protected $approved;
     /**
      * @ORM\ManyToOne(targetEntity="Post", inversedBy="comments")
-     * @ORM\JoinColumn(name="post_id", referencedColumnName="id")
      */
     protected $post;
     /**
@@ -95,25 +93,25 @@ class Comment
         return $this->user;
     }
     /**
-     * Set comment
+     * Set comments
      *
-     * @param string $comment
+     * @param string $comments
      *
      * @return Comment
      */
-    public function setComment($comment)
+    public function setComments($comments)
     {
-        $this->comment = $comment;
+        $this->comments = $comments;
         return $this;
     }
     /**
-     * Get comment
+     * Get comments
      *
      * @return string
      */
-    public function getComment()
+    public function getComments()
     {
-        return $this->comment;
+        return $this->comments;
     }
     /**
      * Set approved

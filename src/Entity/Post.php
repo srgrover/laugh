@@ -3,9 +3,8 @@ namespace App\Entity;
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\ArrayCollection;
 /**
- * @ORM\Entity(repositoryClass="\Entity\Repository\BlogRepository")
+ * @ORM\Entity(repositoryClass="App\Entity\Repository\PostRepository")
  * @ORM\Table(name="post")
- * @ORM\HasLifecycleCallbacks
  */
 class Post
 {
@@ -28,15 +27,15 @@ class Post
      */
     protected $post;
     /**
-     * @ORM\Column(type="string", length=20)
+     * @ORM\Column(type="string", nullable=true)
      */
     protected $image;
     /**
-     * @ORM\Column(type="text")
+     * @ORM\Column(type="text", nullable=true)
      */
     protected $tags;
     /**
-     * @ORM\OneToMany(targetEntity="Comment", mappedBy="blog")
+     * @ORM\OneToMany(targetEntity="Comment", mappedBy="post")
      */
     protected $comments;
     /**
@@ -44,7 +43,7 @@ class Post
      */
     protected $created;
     /**
-     * @ORM\Column(type="datetime")
+     * @ORM\Column(type="datetime", nullable=true)
      */
     protected $updated;
     /**

@@ -1,0 +1,24 @@
+{% extends 'layout.html.twig' %}
+
+{% block content %}
+    <h1 class="well well-sm">
+        {% if post.id %}
+            Modificar Post {{ post }}
+        {% else %}
+            Nuevo Post
+        {% endif %}
+    </h1>
+
+    {{ form_start(formulario) }}
+    {{ form_widget(formulario) }}
+    <div class="form-group">
+        <div class="col-sm-2"></div>
+        <div class="col-sm-10">
+            <button type="submit" name="enviar" class="btn btn-success"><i class="fa fa-check"></i> Guardar los
+                cambios
+            </button>
+        </div>
+    </div>
+    {{ form_end(formulario) }}
+
+{% endblock %}

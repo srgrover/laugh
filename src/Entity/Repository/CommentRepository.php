@@ -1,5 +1,5 @@
 <?php
-namespace Blogger\BlogBundle\Entity\Repository;
+namespace App\Entity\Repository;
 use Doctrine\ORM\EntityRepository;
 /**
  * CommentRepository

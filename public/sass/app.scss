@@ -1,0 +1,138 @@
+/* /Imports/ */
+@import 'variables';
+@import "mixin";
+
+
+/* Listas */
+h1{
+  color: $primary;
+}
+
+ul{
+  padding: 0;
+  li{
+    list-style: none;
+    display: inline-block;
+  }
+}
+
+/* Box */
+.box_secondary {
+  @include box($lighness, 100%);
+  position: relative;
+}
+
+.box_primary {
+  @include box($ligh, 100%);
+  position: relative;
+  box-shadow: 0 1px 4px 0 rgba(0,0,0,0.14);
+  margin: 0 auto;
+  float: none;
+  white-space: normal;
+}
+
+.box_center{
+  margin: 0 auto;
+}
+
+/* Headers */
+.header_text{
+  padding: 5% 0;
+}
+
+.header_tabs{
+  border-bottom: 1px solid darken($lighness, 10%);
+}
+
+/* Anclas */
+a{
+  color: $darkness;
+}
+
+a:hover{
+  color: $primary;
+  text-decoration: none;
+}
+
+.display_username{
+  display: block;
+  font-weight: bold;
+  color: $primary;
+}
+
+.header_feed{
+  .header_tabs{
+    a{
+      padding: 5%-0.5% 0;
+    }
+    a:nth-child(1){
+      margin-right: 15px;
+    }
+    a:nth-child(2){
+      margin-left: 15px;
+    }
+    a:hover{
+      border-bottom: 2px solid $primary;
+    }
+    .tab_active{
+      border-bottom: 2px solid $primary;
+      color: $primary;
+    }
+  }
+  .cells_menu{
+    padding: 1.6% 0;
+    border: 1px solid darken($lighness, 10%);
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+
+    a{
+      padding: 1.5% 2%;
+      border: 2px solid transparent;
+      font-weight: bold;
+    }
+    a.active{
+      border: 2px solid $primary;
+      color: $primary;
+      -webkit-border-radius: 3px;
+      -moz-border-radius: 3px;
+      border-radius: 3px;
+    }
+  }
+}
+
+.nav_blank{
+  padding-top: 56px;
+}
+
+/* Botones */
+.btn_signin{
+  margin-right: 5px;
+  border: 1px solid #17a2b8;
+  color: #17a2b8;
+}
+
+.btn_register{
+  margin-left: 5px;
+}
+
+.btn_user{
+  margin-right: 5px;
+  border: 1px solid #aa00ff;
+  color: #aa00ff;
+}
+
+.btn_user:hover{
+  background: #aa00ff;
+  color: $ligh;
+}
+
+.new_post{
+  border-radius: 50%;
+  position: absolute;
+  bottom: 5%;
+  right: 5%;
+  font-size: 25px;
+  height: 50px;
+  width: 50px;
+}

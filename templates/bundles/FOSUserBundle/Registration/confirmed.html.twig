@@ -1,0 +1,21 @@
+{% extends "layout.html.twig" %}
+
+{% trans_default_domain 'FOSUserBundle' %}
+
+{% block navbar %}{% endblock %}
+
+{% block content %}
+    <section class="jumbotron text-center">
+        <h2 class="text-center text-success">
+            <i class="fa fa-check"></i>
+        </h2>
+        <h5 class="text-center text-muted ">{{ 'registration.confirmed'|trans({'%username%': user.username}) }}</h5>
+        {% if targetUrl %}
+            <p class="text-muted"><a href="{{ targetUrl }}">{{ 'registration.back'|trans }}</a></p>
+        {% endif %}
+        <i class="fa fa-arrow-left rf"></i>
+        <a href="{{ path('homepage') }}" class="text-muted">
+            Volver al inicio
+        </a>
+    </section>
+{% endblock %}
