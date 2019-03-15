@@ -19,10 +19,6 @@ class Post
      */
     protected $title;
     /**
-     * @ORM\Column(type="string", length=100)
-     */
-    protected $author;
-    /**
      * @ORM\Column(type="text")
      */
     protected $post;
@@ -38,6 +34,12 @@ class Post
      * @ORM\OneToMany(targetEntity="Comment", mappedBy="post")
      */
     protected $comments;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="User", inversedBy="posts")
+     */
+    protected $author;
+
     /**
      * @ORM\Column(type="datetime")
      */
@@ -50,6 +52,10 @@ class Post
      * @ORM\Column(type="string")
      */
     protected $slug;
+    /**
+     * @ORM\Column(type="integer")
+     */
+    protected $views = 0;
     /**
      * Get id
      *
@@ -281,6 +287,23 @@ class Post
     {
         return $this->slug;
     }
+
+    /**
+     * @return mixed
+     */
+    public function getViews()
+    {
+        return $this->views;
+    }
+
+    /**
+     * @param mixed $views
+     */
+    public function setViews($views): void
+    {
+        $this->views = $views;
+    }
+
     public function slugify($text)
     {
         // replace non letter or digits by -

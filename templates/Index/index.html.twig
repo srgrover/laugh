@@ -22,13 +22,55 @@
                     <a href="#">MES</a>
                     <a href="#">AÑO</a>
                 </span>
-
             </div>
 
+            <div class="mt-5">
+                {% for post in posts %}
+                    <a href="#" class="btn btn-light btn-sm btn_user">
+                        <i class="fa fa-chess-knight"></i>
+                    </a>
+                    <a href="#" class="post_username">{{ post.author.username }}</a>
+                    <small>{{ post.created | date("F jS \\a \\l\\a\\s g:ia") }}</small>
+                    <h3>{{ post.title }}</h3>
+                    <p>{{ post.post }}</p>
+                    <div class="dropdown-divider pb-3"></div>
+                {% else %}
+                    <h2>No hay entradas disponibles</h2>
+                {% endfor %}
+
+            </div>
         </section>
         <aside class="col">
             <div class="box_secondary">
-                Esto es una caja
+                <h6>
+                    <small class="font-weight-bold">Últimas entradas</small>
+                </h6>
+                <div class="dropdown-divider"></div>
+                <ul>
+                    {% for post in posts %}
+                        <li class="nav-link">
+                            <a href="#" class=" font-weight-bold text-muted pb-2">
+                                {{ post.title }}
+                            </a>
+                            <a href="#" class="text-muted">
+                                <small>{{ post.author.username }}</small>
+                            </a>
+                            <ul class="list-inline list_stats">
+                                <li class="list-inline-item">
+                                    <i class="fa fa-eye"></i> <span>{{ post.views }}</span>
+                                </li>
+                                <li class="list-inline-item">
+                                    <a href="#">
+                                        <i class="fa fa-comment-alt"></i>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+
+                    {% else %}
+                        <h2>No hay entradas disponibles</h2>
+                    {% endfor %}
+                </ul>
             </div>
         </aside>
     </div>

@@ -16,6 +16,22 @@ ul{
   }
 }
 
+.list_stats{
+  li{
+    color: $primary;
+    a{
+      color: $primary;
+    }
+    a:hover{
+      color: darken($primary, 20%);
+      transition-duration: 0.3s;
+    }
+  }
+  li:nth-child(2){
+    padding-left: 15px;
+  }
+}
+
 /* Box */
 .box_secondary {
   @include box($lighness, 100%);
@@ -58,6 +74,14 @@ a:hover{
   display: block;
   font-weight: bold;
   color: $primary;
+}
+
+.post_username{
+  color: $primary;
+}
+
+.post_username:hover{
+  color: darken($primary, 20%);
 }
 
 .header_feed{
