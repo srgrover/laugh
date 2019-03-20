@@ -16,10 +16,10 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav mr-auto">
                         <li class="nav-item {% if ruta == 'homepage' %}active{% endif %}">
-                            <a class="nav-link" href="#">Inicio</a>
+                            <a class="nav-link" href="{{ path('homepage') }}">Inicio</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Link</a>
+                            <a class="nav-link" href="#">Usuarios</a>
                         </li>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -36,8 +36,11 @@
                             <a class="nav-link disabled" href="#">Disabled</a>
                         </li>
                     </ul>
+                    <button class="btn btn-link">
+                        <i class="fa fa-search text-muted"></i>
+                    </button>
                     {% if app.user %}
-                        <a class="btn btn-light btn-sm btn_signin" href="{{ path('new_post') }}">Nuevo post</a>
+                        <a class="btn btn-light btn-sm btn_border" href="{{ path('new_post') }}">Nuevo post</a>
                         <div class="btn-group">
                             <button type="button" class="btn btn-light dropdown-toggle btn-sm btn_user" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <i class="fa fa-chess-knight"></i>
@@ -55,9 +58,8 @@
                                 </a>
                             </div>
                         </div>
-
                     {% else %}
-                        <a class="btn btn-light btn-sm btn_signin" href="{{ path('fos_user_security_login') }}">Entrar</a>
+                        <a class="btn btn-light btn-sm btn_border" href="{{ path('fos_user_security_login') }}">Entrar</a>
                         <a class="btn btn-info btn-sm btn_register" href="{{ path('fos_user_registration_register') }}">Registrarse</a>
                     {% endif %}
                 </div>
@@ -85,5 +87,6 @@
             {% endfor %}
         {% endif %}
         {% block content %}{% endblock %}
+
     </div>
 {% endblock %}

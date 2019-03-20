@@ -1,24 +1,44 @@
 {% extends 'layout.html.twig' %}
 
 {% block content %}
-    <h1 class="well well-sm">
-        {% if post.id %}
-            Modificar Post {{ post }}
-        {% else %}
-            Nuevo Post
-        {% endif %}
-    </h1>
+    <div class="mt-5"></div>
 
-    {{ form_start(formulario) }}
-    {{ form_widget(formulario) }}
-    <div class="form-group">
-        <div class="col-sm-2"></div>
-        <div class="col-sm-10">
-            <button type="submit" name="enviar" class="btn btn-success"><i class="fa fa-check"></i> Guardar los
-                cambios
-            </button>
-        </div>
+    <div class="container row">
+        <section class="col col-md-8">
+            <h1 class="well well-sm">
+                {% if post.id %}
+                    Modificar Post {{ post }}
+                {% else %}
+                    Nuevo Post
+                {% endif %}
+            </h1>
+
+            {{ form_start(formulario) }}
+            {{ form_widget(formulario) }}
+            <small id="emailHelp" class="form-text text-muted">Separa las etiquetas con comas.</small>
+
+            <div class="form-group">
+                <button type="submit" name="enviar" class="btn btn-info">
+                    Enviar a revisión
+                </button>
+                <a href="{{ path('homepage') }}" class="btn btn-light">
+                    Cancelar
+                </a>
+            </div>
+            {{ form_end(formulario) }}
+        </section>
+        <aside class="col">
+            <div class="box_secondary">
+                <h6>
+                    <small class="font-weight-bold">Últimas entradas</small>
+                </h6>
+                <div class="dropdown-divider"></div>
+
+            </div>
+        </aside>
     </div>
-    {{ form_end(formulario) }}
+
+
+
 
 {% endblock %}

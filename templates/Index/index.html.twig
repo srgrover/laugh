@@ -1,9 +1,6 @@
 {% extends 'layout.html.twig' %}
 
 {% block content %}
-    <a href="#" class="btn btn-info new_post">
-        <i class="fa fa-plus"></i>
-    </a>
     <div class="mt-4"></div>
     <div class="container row">
         <section class="col col-md-8">
@@ -31,7 +28,11 @@
                     </a>
                     <a href="#" class="post_username">{{ post.author.username }}</a>
                     <small>{{ post.created | date("F jS \\a \\l\\a\\s g:ia") }}</small>
-                    <h3>{{ post.title }}</h3>
+                    <h3>
+                        <a href="{{ path('view_post', {'id' : post.id}) }}" class=" font-weight-bold text-muted pb-2">
+                            {{ post.title }}
+                        </a>
+                    </h3>
                     <p>{{ post.post }}</p>
                     <div class="dropdown-divider pb-3"></div>
                 {% else %}
@@ -49,7 +50,7 @@
                 <ul>
                     {% for post in posts %}
                         <li class="nav-link">
-                            <a href="#" class=" font-weight-bold text-muted pb-2">
+                            <a href="{{ path('view_post', {'id' : post.id}) }}" class=" font-weight-bold text-muted pb-2">
                                 {{ post.title }}
                             </a>
                             <a href="#" class="text-muted">

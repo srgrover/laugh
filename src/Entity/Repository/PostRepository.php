@@ -25,6 +25,22 @@ class PostRepository extends EntityRepository
         return $qb->getQuery()
             ->getResult();
     }
+
+    /**
+     * @param $id
+     * @return mixed
+     */
+    public function getBlog($id)
+    {
+        $qb = $this->createQueryBuilder('b')
+            ->select('b')
+            ->where('b.id = :id')
+            ->setParameter('id', $id);
+
+        return $qb->getQuery()
+            ->getResult();
+    }
+
     public function getTags()
     {
         $blogTags = $this->createQueryBuilder('b')

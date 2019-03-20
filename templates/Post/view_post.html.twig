@@ -1,0 +1,51 @@
+{% extends 'layout.html.twig' %}
+
+{% block content %}
+    <div class="mt-5"></div>
+
+    <div class="container row">
+        <section class="col col-md-8">
+            <div class="row">
+                <div class="col col-md-10">
+                    <a href="#" class="btn btn-light btn-sm btn_user">
+                        <i class="fa fa-chess-knight"></i>
+                    </a>
+                    <a href="#" class="post_username">{{ post.author.username }}</a>
+                    <small>{{ post.created | date("F jS \\a \\l\\a\\s g:ia") }}</small>
+                </div>
+                <div class="col col-md-2">
+                    {% if app.user == post.author %}
+                        <a href="{{ path('edit_post', {'id' : post.id}) }}" class="btn btn-light btn_border">Editar</a>
+                    {% endif %}
+                </div>
+            </div>
+
+
+            <h3>
+                <a href="{{ path('view_post', {'id' : post.id}) }}" class=" font-weight-bold text-muted pb-2">
+                    {{ post.title }}
+                </a>
+            </h3>
+            <div class="tags_section mb-4">
+                <span class="tags_hide">{{ post.slug }}</span>
+            </div>
+            <p>{{ post.post }}</p>
+            <div class="dropdown-divider pb-3"></div>
+
+
+        </section>
+        <aside class="col">
+            <div class="box_secondary">
+                <h6>
+                    <small class="font-weight-bold">Entradas relacionadas</small>
+                </h6>
+                <div class="dropdown-divider"></div>
+
+            </div>
+        </aside>
+    </div>
+{% endblock %}
+
+{% block javascripts %}
+    <script src="{{ asset('js/app.js') }}"></script>
+{% endblock %}

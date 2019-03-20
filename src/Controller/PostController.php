@@ -4,6 +4,8 @@ namespace App\Controller;
 use App\Entity\Post;
 use App\Form\PostType;
 use Doctrine\ORM\EntityManager;
+use Doctrine\ORM\OptimisticLockException;
+use Doctrine\ORM\ORMException;
 use http\Exception;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -32,12 +34,12 @@ class PostController extends AbstractController
         if (null == $post) {
             $post = new Post();
             $em->persist($post);
+
+            $post->setAuthor($this->getUser());
+            $post->setCreated(new \Datetime("now"));
         }
         $form = $this->createForm(PostType::class, $post);
         $form->handleRequest($request);
-
-        $post->setAuthor($this->getUser());
-        $post->setCreated(new \Datetime("now"));
 
         if ($form->isSubmitted() && $form->isValid()) {
             try {
@@ -52,6 +54,30 @@ class PostController extends AbstractController
         return $this->render('Post/add_post.html.twig', [
             'post' => $post,
             'formulario' => $form->createView()
+        ]);
+    }
+
+    /**
+     * @Route("/post/{id}", name="view_post", methods={"GET", "POST"})
+     * @param Post $post
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
+     */
+    public function viewPostAction(Post $post)
+    {
+        /** @var EntityManager $em */
+        $em = $this->getDoctrine()->getManager();
+
+        $views = $post->getViews();
+        $post->setViews($views+1);
+
+        try {
+            $em->flush();
+        } catch (OptimisticLockException $e) {
+        } catch (ORMException $e) {
+        }
+
+        return $this->render('Post/view_post.html.twig', [
+            'post' => $post,
         ]);
     }
 
