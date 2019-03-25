@@ -38,6 +38,11 @@ class User extends BaseUser
      */
     protected $posts;
 
+    /**
+     * @ORM\OneToMany(targetEntity="Comment", mappedBy="author")
+     */
+    protected $comments;
+
 
     public function __construct()
     {

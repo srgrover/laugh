@@ -10,7 +10,7 @@ $( document ).ready(function() {
     tags.forEach(function (tag) {
         var ancla = $('<a/>', {
             'html' : tag,
-            'class' : 'badge btn_border tag_post mr-1',
+            'class' : 'badge btn_border_primary tag_post mr-1',
             'href' : '#'
         });
         tags_section.append(ancla);

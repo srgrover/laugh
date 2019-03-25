@@ -1,7 +1,9 @@
 <?php
 namespace App\Controller;
 
+use App\Entity\Comment;
 use App\Entity\Post;
+use App\Form\CommentType;
 use App\Form\PostType;
 use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\OptimisticLockException;
@@ -59,10 +61,11 @@ class PostController extends AbstractController
 
     /**
      * @Route("/post/{id}", name="view_post", methods={"GET", "POST"})
+     * @param Request $request
      * @param Post $post
      * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
      */
-    public function viewPostAction(Post $post)
+    public function viewPostAction(Request $request, Post $post)
     {
         /** @var EntityManager $em */
         $em = $this->getDoctrine()->getManager();
@@ -76,8 +79,35 @@ class PostController extends AbstractController
         } catch (ORMException $e) {
         }
 
+        $new_comment = new Comment();
+
+        $form_comment = $this->createForm(CommentType::class, $new_comment);
+        $form_comment->handleRequest($request);
+
+        if ($form_comment->isSubmitted() && $form_comment->isValid()) {
+            try {
+                $new_comment->setAuthor($this->getUser());
+                $new_comment->setCreated(new \DateTime('now'));
+                $new_comment->setApproved(true);
+                $new_comment->setPost($post);
+
+                $em->flush();
+                $this->addFlash('estado', 'Comentario enviado!');
+                return $this->redirectToRoute('view_post', $post);
+            }
+            catch(Exception $e) {
+                $this->addFlash('error', 'No se han podido guardar los cambios');
+            } catch (OptimisticLockException $e) {
+            } catch (ORMException $e) {
+            }
+        }
+
+        $comments = $this->getDoctrine()->getRepository(Comment::class)->getCommentsForBlog($post->getId());
+
         return $this->render('Post/view_post.html.twig', [
             'post' => $post,
+            'comments' => $comments,
+            'form_comment' => $form_comment->createView(),
         ]);
     }
 

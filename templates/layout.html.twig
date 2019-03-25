@@ -5,7 +5,7 @@
     {% block navbar %}
         <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
             <div class="container">
-                <a class="navbar-brand" href="#">
+                <a class="navbar-brand" href="{{ path('homepage') }}">
                     DE<span class="font-weight-bold">RISAS</span>
                     <i class="fa fa-grin-squint-tears"></i>
                 </a>
@@ -18,8 +18,8 @@
                         <li class="nav-item {% if ruta == 'homepage' %}active{% endif %}">
                             <a class="nav-link" href="{{ path('homepage') }}">Inicio</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Usuarios</a>
+                        <li class="nav-item {% if ruta == 'list_users' %}active{% endif %}">
+                            <a class="nav-link" href="{{ path('list_users') }}">Usuarios</a>
                         </li>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -40,7 +40,7 @@
                         <i class="fa fa-search text-muted"></i>
                     </button>
                     {% if app.user %}
-                        <a class="btn btn-light btn-sm btn_border" href="{{ path('new_post') }}">Nuevo post</a>
+                        <a class="btn btn-light btn-sm btn_border_primary" href="{{ path('new_post') }}">Nuevo post</a>
                         <div class="btn-group">
                             <button type="button" class="btn btn-light dropdown-toggle btn-sm btn_user" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <i class="fa fa-chess-knight"></i>

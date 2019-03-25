@@ -51,6 +51,25 @@ ul{
   margin: 0 auto;
 }
 
+.box_stats_user{
+  padding: 7px 15px;
+  display: inline-block;
+  small{
+    font-weight: 500;
+  }
+  span{
+    display: block;
+    font-size: 23px;
+    font-weight: 500;
+  }
+}
+
+.list_stats_post{
+  a:hover{
+    color: $primary !important;
+  }
+}
+
 /* Headers */
 .header_text{
   padding: 5% 0;
@@ -129,11 +148,24 @@ a:hover{
   padding-top: 56px;
 }
 
+
 /* Botones */
-.btn_border{
+.btn_border_primary{
+  @include button($primary);
   margin-right: 5px;
-  border: 1px solid #17a2b8;
   color: #17a2b8;
+}
+
+.btn_border_success{
+  @include button($success);
+  margin-right: 5px;
+  color: $success;
+}
+
+.btn_border_muted{
+  @include button($darkness);
+  margin-right: 5px;
+  color: $darkness;
 }
 
 .btn_register{
@@ -142,7 +174,7 @@ a:hover{
 
 .btn_user{
   margin-right: 5px;
-  border: 1px solid #aa00ff;
+  @include button($purple);
   color: #aa00ff;
 }
 

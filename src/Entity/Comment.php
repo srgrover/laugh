@@ -4,16 +4,16 @@ use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Mapping\ClassMetadata;
 use Symfony\Component\Validator\Constraints\NotBlank;
 /**
- * @ORM\Entity(repositoryClass="App\Entity\UserRepository")
+ * @ORM\Entity(repositoryClass="App\Entity\Repository\CommentRepository")
  * @ORM\Table(name="comment")
  */
 class Comment
 {
     public static function loadValidatorMetadata(ClassMetadata $metadata)
     {
-        $metadata->addPropertyConstraint('user', new NotBlank(array(
-            'message' => 'Debes introducir tu nombre'
-        )));
+//        $metadata->addPropertyConstraint('user', new NotBlank(array(
+//            'message' => 'Debes introducir tu nombre'
+//        )));
         $metadata->addPropertyConstraint('comment', new NotBlank(array(
             'message' => 'Debes introducir un comentario'
         )));
@@ -26,17 +26,17 @@ class Comment
      */
     protected $id;
     /**
-     * @ORM\Column(type="string")
+     * @ORM\ManyToOne(targetEntity="User", inversedBy="comments")
      */
-    protected $user;
+    protected $author;
     /**
      * @ORM\Column(type="text")
      */
-    protected $comments;
+    protected $comment;
     /**
      * @ORM\Column(type="boolean")
      */
-    protected $approved;
+    protected $approved = true;
     /**
      * @ORM\ManyToOne(targetEntity="Post", inversedBy="comments")
      */
@@ -49,6 +49,7 @@ class Comment
      * @ORM\Column(type="datetime")
      */
     protected $updated;
+
     public function __construct()
     {
         $this->setCreated(new \DateTime());
@@ -71,47 +72,43 @@ class Comment
     {
         return $this->id;
     }
+
     /**
-     * Set user
+     * @return mixed
+     */
+    public function getAuthor()
+    {
+        return $this->author;
+    }
+
+    /**
+     * @param mixed $author
+     */
+    public function setAuthor($author): void
+    {
+        $this->author = $author;
+    }
+
+    /**
+     * Set comment
      *
-     * @param string $user
+     * @param string $comment
      *
      * @return Comment
      */
-    public function setUser($user)
+    public function setComment($comment)
     {
-        $this->user = $user;
+        $this->comment = $comment;
         return $this;
     }
     /**
-     * Get user
+     * Get comment
      *
      * @return string
      */
-    public function getUser()
+    public function getComment()
     {
-        return $this->user;
-    }
-    /**
-     * Set comments
-     *
-     * @param string $comments
-     *
-     * @return Comment
-     */
-    public function setComments($comments)
-    {
-        $this->comments = $comments;
-        return $this;
-    }
-    /**
-     * Get comments
-     *
-     * @return string
-     */
-    public function getComments()
-    {
-        return $this->comments;
+        return $this->comment;
     }
     /**
      * Set approved

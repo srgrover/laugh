@@ -2,7 +2,7 @@
 /*********** /Colores/ ***********/
 /* Listas */
 h1 {
-  color: #7aa1bd;
+  color: #17a2b8;
 }
 
 ul {
@@ -14,13 +14,13 @@ ul li {
 }
 
 .list_stats li {
-  color: #7aa1bd;
+  color: #17a2b8;
 }
 .list_stats li a {
-  color: #7aa1bd;
+  color: #17a2b8;
 }
 .list_stats li a:hover {
-  color: #456e8c;
+  color: #0c525d;
   transition-duration: 0.3s;
 }
 .list_stats li:nth-child(2) {
@@ -52,6 +52,23 @@ ul li {
   margin: 0 auto;
 }
 
+.box_stats_user {
+  padding: 7px 15px;
+  display: inline-block;
+}
+.box_stats_user small {
+  font-weight: 500;
+}
+.box_stats_user span {
+  display: block;
+  font-size: 23px;
+  font-weight: 500;
+}
+
+.list_stats_post a:hover {
+  color: #17a2b8 !important;
+}
+
 /* Headers */
 .header_text {
   padding: 5% 0;
@@ -67,22 +84,22 @@ a {
 }
 
 a:hover {
-  color: #7aa1bd;
+  color: #17a2b8;
   text-decoration: none;
 }
 
 .display_username {
   display: block;
   font-weight: bold;
-  color: #7aa1bd;
+  color: #17a2b8;
 }
 
 .post_username {
-  color: #7aa1bd;
+  color: #17a2b8;
 }
 
 .post_username:hover {
-  color: #456e8c;
+  color: #0c525d;
 }
 
 .header_feed .header_tabs a {
@@ -95,11 +112,11 @@ a:hover {
   margin-left: 15px;
 }
 .header_feed .header_tabs a:hover {
-  border-bottom: 2px solid #7aa1bd;
+  border-bottom: 2px solid #17a2b8;
 }
 .header_feed .header_tabs .tab_active {
-  border-bottom: 2px solid #7aa1bd;
-  color: #7aa1bd;
+  border-bottom: 2px solid #17a2b8;
+  color: #17a2b8;
 }
 .header_feed .cells_menu {
   padding: 1.6% 0;
@@ -114,8 +131,8 @@ a:hover {
   font-weight: bold;
 }
 .header_feed .cells_menu a.active {
-  border: 2px solid #7aa1bd;
-  color: #7aa1bd;
+  border: 2px solid #17a2b8;
+  color: #17a2b8;
   -webkit-border-radius: 3px;
   -moz-border-radius: 3px;
   border-radius: 3px;
@@ -126,10 +143,22 @@ a:hover {
 }
 
 /* Botones */
-.btn_border {
-  margin-right: 5px;
+.btn_border_primary {
   border: 1px solid #17a2b8;
+  margin-right: 5px;
   color: #17a2b8;
+}
+
+.btn_border_success {
+  border: 1px solid #58D68D;
+  margin-right: 5px;
+  color: #58D68D;
+}
+
+.btn_border_muted {
+  border: 1px solid #333333;
+  margin-right: 5px;
+  color: #333333;
 }
 
 .btn_register {
