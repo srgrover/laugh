@@ -29,6 +29,11 @@ class User extends BaseUser
     protected $lastname;
 
     /**
+     * @ORM\Column(type="datetime", nullable=true)
+     */
+    protected $register_at;
+
+    /**
      * @ORM\Column(type="boolean", nullable=false)
      */
     protected $admin = false;
@@ -44,10 +49,15 @@ class User extends BaseUser
     protected $comments;
 
 
+    public function generateDate(){
+        return new \DateTime('now');
+    }
+
     public function __construct()
     {
         parent::__construct();
         // your own logic
+        $this->register_at = new \DateTime('now');
     }
 
     public function getRoles()
@@ -139,5 +149,36 @@ class User extends BaseUser
         $this->posts = $posts;
     }
 
+    /**
+     * @return mixed
+     */
+    public function getComments()
+    {
+        return $this->comments;
+    }
+
+    /**
+     * @param mixed $comments
+     */
+    public function setComments($comments): void
+    {
+        $this->comments = $comments;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getRegisterAt()
+    {
+        return $this->register_at;
+    }
+
+    /**
+     * @param mixed $register_at
+     */
+    public function setRegisterAt($register_at): void
+    {
+        $this->register_at = $register_at;
+    }
 
 }

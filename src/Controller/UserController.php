@@ -32,37 +32,4 @@ class UserController extends AbstractController
         ]);
     }
 
-//    /**
-//     * @Route("/post/delete/{id}", name="delete_post", methods={"GET"})
-//     */
-//    public function borrarAction(Post $post)
-//    {
-//        /** @var EntityManager $em */
-//        $em = $this->getDoctrine()->getManager();
-//        return $this->render('alumno/borrar.html.twig', [
-//            'alumno' => $post
-//        ]);
-//    }
-//    /**
-//     * @Route("/post/delete/{id}", name="confirm_delete_post", methods={"POST"})
-//     */
-//    public function borrarDeVerdadAction(Post $post)
-//    {
-//        /** @var EntityManager $em */
-//        $em = $this->getDoctrine()->getManager();
-//        try {
-//            foreach($post->getPartes() as $parte) {
-//                $em->remove($parte);
-//            }
-//            $em->remove($post);
-//            $em->flush();
-//            $this->addFlash('estado', 'Alumno eliminado con éxito');
-//        }
-//        catch(Exception $e) {
-//            $this->addFlash('error', 'No se han podido eliminar');
-//        }
-//        return $this->redirectToRoute('listar_alumnado');
-//    }
-
-
 }

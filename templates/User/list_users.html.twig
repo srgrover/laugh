@@ -8,11 +8,25 @@
             <div class="row">
                 {% for user in users %}
                     <div class="col col-md-10 mb-3">
-                        <a href="#" class="btn btn-light btn-sm btn_user">
-                            <i class="fa fa-chess-knight"></i>
-                        </a>
-                        <a href="#" class="post_username text-muted">{{ user.name }} {{ user.lastname }}</a>
-                        <a href="#" class="post_username"><small>@{{ user.username }}</small></a>
+
+                        <div class="row">
+                            <div class="col col-md-1 mr-2">
+                                <a href="#" class="btn btn-light btn-lg btn_user">
+                                    <i class="fa fa-chess-knight"></i>
+                                </a>
+                            </div>
+                            <div class="col row">
+                                <div class="col col-md-12">
+                                    <a href="#" class="post_username text-muted">{{ user.name }} {{ user.lastname }}</a>
+                                    <a href="#" class="post_username"><small>@{{ user.username }}</small></a>
+                                </div>
+                                <div class="col col-md-12">
+                                    <small class="text-muted">Usuario nivel: 5</small>
+                                </div>
+                            </div>
+
+                        </div>
+
                     </div>
                     <div class="col col-md-2">
                         {% if app.user != user %}

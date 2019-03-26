@@ -80,20 +80,23 @@ class PostController extends AbstractController
         }
 
         $new_comment = new Comment();
+        try {
+            $em->persist($new_comment);
+        } catch (ORMException $e) {
+        }
 
         $form_comment = $this->createForm(CommentType::class, $new_comment);
         $form_comment->handleRequest($request);
 
         if ($form_comment->isSubmitted() && $form_comment->isValid()) {
+            $new_comment->setAuthor($this->getUser());
+            $new_comment->setCreated(new \DateTime('now'));
+            $new_comment->setApproved(true);
+            $new_comment->setPost($post);
             try {
-                $new_comment->setAuthor($this->getUser());
-                $new_comment->setCreated(new \DateTime('now'));
-                $new_comment->setApproved(true);
-                $new_comment->setPost($post);
-
                 $em->flush();
                 $this->addFlash('estado', 'Comentario enviado!');
-                return $this->redirectToRoute('view_post', $post);
+                return $this->redirectToRoute('view_post', array('id' => $post->getId()));
             }
             catch(Exception $e) {
                 $this->addFlash('error', 'No se han podido guardar los cambios');
@@ -111,37 +114,27 @@ class PostController extends AbstractController
         ]);
     }
 
-//    /**
-//     * @Route("/post/delete/{id}", name="delete_post", methods={"GET"})
-//     */
-//    public function borrarAction(Post $post)
-//    {
-//        /** @var EntityManager $em */
-//        $em = $this->getDoctrine()->getManager();
-//        return $this->render('alumno/borrar.html.twig', [
-//            'alumno' => $post
-//        ]);
-//    }
-//    /**
-//     * @Route("/post/delete/{id}", name="confirm_delete_post", methods={"POST"})
-//     */
-//    public function borrarDeVerdadAction(Post $post)
-//    {
-//        /** @var EntityManager $em */
-//        $em = $this->getDoctrine()->getManager();
-//        try {
-//            foreach($post->getPartes() as $parte) {
-//                $em->remove($parte);
-//            }
-//            $em->remove($post);
-//            $em->flush();
-//            $this->addFlash('estado', 'Alumno eliminado con éxito');
-//        }
-//        catch(Exception $e) {
-//            $this->addFlash('error', 'No se han podido eliminar');
-//        }
-//        return $this->redirectToRoute('listar_alumnado');
-//    }
+    /**
+     * @Route("/post/delete/{id}", name="confirm_delete_post", methods={"GET"})
+     */
+    public function borrarDeVerdadAction(Post $post)
+    {
+        /** @var EntityManager $em */
+        $em = $this->getDoctrine()->getManager();
+        try {
+            foreach($post->getComments() as $comment) {
+                $em->remove($comment);
+            }
+            $em->remove($post);
+            $em->flush();
+            $this->addFlash('estado', 'La entrada se ha eliminado');
+        }
+        catch(Exception $e) {
+            $this->addFlash('error', 'No se han podido eliminar');
+        } catch (ORMException $e) {
+        }
+        return $this->redirectToRoute('homepage');
+    }
 
 
 }

@@ -57,7 +57,7 @@ class Comment
         $this->setApproved(true);
     }
     /**
-     * @ORM\preUpdate
+     * @ORM\PreUpdate
      */
     public function setUpdatedValue()
     {

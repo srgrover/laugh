@@ -191,4 +191,23 @@ a:hover {
   height: 300px;
 }
 
+/* -----
+SVG Icons - svgicons.sparkk.fr
+----- */
+.svg-icon {
+  width: 1.5em;
+  height: 1.5em;
+}
+
+.svg-icon path,
+.svg-icon polygon,
+.svg-icon rect {
+  fill: #b58ba9;
+}
+
+.svg-icon circle {
+  stroke: #b58ba9;
+  stroke-width: 1;
+}
+
 /*# sourceMappingURL=app.css.map */
