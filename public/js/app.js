@@ -1,8 +1,6 @@
 $( document ).ready(function() {
     console.log( "ready!" );
 
-
-
     var tags_section = $('.tags_section');
     var tags_hide = $('.tags_hide');
     var tags = $.trim(tags_hide.text()).split("-");
@@ -20,5 +18,16 @@ $( document ).ready(function() {
 
 
 
-    console.log( tags[0], ancla );
+    $('.user-row').mouseover(function () {
+        $(this).find('.btn_follow').removeClass( "d-none" );
+        $(this).find('.span_karma').addClass( "d-none" );
+        $(this).find('.span_rating').addClass( "d-none" );
+    }).mouseout(function () {
+        $(this).find('.btn_follow').addClass( "d-none" );
+        $(this).find('.span_karma').removeClass( "d-none" );
+        $(this).find('.span_rating').removeClass( "d-none" );
+    });
+
+
+
 });

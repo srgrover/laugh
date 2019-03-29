@@ -167,13 +167,8 @@ a:hover {
 
 .btn_user {
   margin-right: 5px;
-  border: 1px solid #aa00ff;
-  color: #aa00ff;
-}
-
-.btn_user:hover {
-  background: #aa00ff;
-  color: #ffffff;
+  border: 1px solid #b58ba9;
+  color: #b58ba9;
 }
 
 .new_post {
@@ -189,6 +184,26 @@ a:hover {
 /* Text */
 .text_post {
   height: 300px;
+}
+
+.cortar {
+  width: 100%;
+  height: 170px;
+  white-space: normal;
+  overflow: hidden;
+}
+.cortar p {
+  text-overflow: ellipsis;
+}
+
+.span_karma small, .my_karma small {
+  color: #7abd85;
+  font-weight: bold;
+}
+
+.span_rating small, .my_rating small {
+  color: #b58ba9;
+  font-weight: bold;
 }
 
 /* -----

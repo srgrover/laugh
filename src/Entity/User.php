@@ -29,6 +29,16 @@ class User extends BaseUser
     protected $lastname;
 
     /**
+     * @ORM\Column(type="decimal", nullable=true, precision=7, scale=1)
+     */
+    protected $karma = 0;
+
+    /**
+     * @ORM\Column(type="decimal", nullable=true, precision=7, scale=1)
+     */
+    protected $rating = 0;
+
+    /**
      * @ORM\Column(type="datetime", nullable=true)
      */
     protected $register_at;
@@ -131,6 +141,38 @@ class User extends BaseUser
     public function setLastname($lastname): void
     {
         $this->lastname = $lastname;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getKarma()
+    {
+        return $this->karma;
+    }
+
+    /**
+     * @param mixed $karma
+     */
+    public function setKarma($karma): void
+    {
+        $this->karma = $karma;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getRating()
+    {
+        return $this->rating;
+    }
+
+    /**
+     * @param mixed $rating
+     */
+    public function setRating($rating): void
+    {
+        $this->rating = $rating;
     }
 
     /**

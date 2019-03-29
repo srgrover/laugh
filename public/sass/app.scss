@@ -175,12 +175,7 @@ a:hover{
 .btn_user{
   margin-right: 5px;
   @include button($purple);
-  color: #aa00ff;
-}
-
-.btn_user:hover{
-  background: #aa00ff;
-  color: $ligh;
+  color: $purple;
 }
 
 .new_post{
@@ -196,6 +191,30 @@ a:hover{
 /* Text */
 .text_post{
   height: 300px;
+}
+
+.cortar{
+  width: 100%;
+  height: 170px;
+  white-space: normal;
+  overflow: hidden;
+  p{
+    text-overflow: ellipsis;
+  }
+}
+
+.span_karma, .my_karma{
+  small{
+    color: $secondary;
+    font-weight: bold;
+  }
+}
+
+.span_rating, .my_rating{
+  small{
+    color: $purple;
+    font-weight: bold;
+  }
 }
 
 
@@ -231,11 +250,11 @@ SVG Icons - svgicons.sparkk.fr
 .svg-icon path,
 .svg-icon polygon,
 .svg-icon rect {
-  fill: #b58ba9;
+  fill: $purple;
 }
 
 .svg-icon circle {
-  stroke: #b58ba9;
+  stroke: $purple;
   stroke-width: 1;
 }
 

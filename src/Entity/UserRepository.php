@@ -15,7 +15,8 @@ class UserRepository extends EntityRepository
     public function getAllUsers()
     {
         $qb = $this->createQueryBuilder('u')
-            ->select('u');
+            ->select('u')
+            ->orderBy('u.rating', 'DESC');
 
         return $qb->getQuery()
                   ->getResult();
