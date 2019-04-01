@@ -28,5 +28,11 @@ services:
         tags:
             - { name: twig.extension }
 
+    App\Twig\LikedExtension:
+#        arguments:
+#            doctrine: "@doctrine"
+        tags:
+            - { name: twig.extension }
+
     # add more service definitions when explicit configuration is needed
     # please note that last definitions always *replace* previous ones

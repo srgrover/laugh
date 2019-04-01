@@ -82,15 +82,17 @@
 
             {# TODO: Añadir funcionalidad a stats likes #}
             <div class="list_stats_post">
-                <a href="{{ path('like_post', {'id' : post.id}) }}" class="text-muted">
-                    <i class="fa fa-thumbs-up"></i>
-                </a>
-                <span class="text-muted font-weight-bold pr-3">5</span>
+                <button class="text-muted btn btn-light btn_like {% if app.user | liked(post) == true %} d-none {% endif %}" data-id="{{ post.id }}" title="Me gusta" aria-hidden="true" data-toggle="tooltip" data-placement="bottom">
+                    <i class="fa fa-heart"></i>
+                    Me gusta |
+                    <span class="text-muted font-weight-bold">5</span>
+                </button>
 
-                <a href="#" class="text-muted">
-                    <i class="fa fa-thumbs-down"></i>
-                </a>
-                <span class="text-muted font-weight-bold pr-3">1</span>
+                <button class="btn btn-danger btn_unlike {% if app.user | liked(post) == false %} d-none {% endif %}" data-id="{{ post.id }}" title="Ya no me gusta" aria-hidden="true" data-toggle="tooltip" data-placement="bottom">
+                    <i class="fa fa-heart"></i>
+                    Me gusta |
+                    <span class="font-weight-bold">5</span>
+                </button>
 
                 <span class="text-muted font-weight-bold pr-3">
                     <i class="fa fa-eye"></i>

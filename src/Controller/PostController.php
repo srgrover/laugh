@@ -143,14 +143,14 @@ class PostController extends AbstractController
 
     /**
      * @Route("/post/like/{id}", name="like_post", methods={"GET"})
-     * @param Request $request
+     * @param Post $post
+     * @return Response
      */
-    public function likeAction(Request $request, Post $post)
+    public function likeAction(Post $post)
     {
+        $response = "Te gusta esta entrada";
         $user = $this->getUser();
-
         $em = $this->getDoctrine()->getManager();
-
 
         $like = new Liker();
         $like->setUser($user);
@@ -159,15 +159,41 @@ class PostController extends AbstractController
         $em->persist($like);
         try {
             $em->flush();
-            $this->addFlash('estado', 'Te gusta esta entrada');
         }
         catch(Exception $e) {
-            $this->addFlash('error', 'Ups! Algo salió mal. Intentelo más tarde');
+            $response= "Ups! Algo salió mal. Intentelo más tarde";
         }
 
-        return $this->redirectToRoute('view_post', array('id' => $post->getId()));
+        return new Response($response);
     }
 
+    /**
+     * @Route("/post/dislike/{id}", name="dislike_post", methods={"GET"})
+     * @param Post $post
+     * @return Response
+     */
+    public function dislikeAction(Post $post)
+    {
+        $response = "Te ha dejado de gustar esta entrada";
+        $user = $this->getUser();
+        $em = $this->getDoctrine()->getManager();
 
+        $like_repo = $em->getRepository('App\Entity\Liker');
+
+        $like = $like_repo->findOneBy([
+            'user' => $user,
+            'post' => $post
+        ]);
+
+        try {
+            $em->remove($like);
+            $em->flush();
+        }
+        catch(Exception $e) {
+            $response= "Ups! Algo salió mal. Intentelo más tarde";
+        }
+
+        return new Response($response);
+    }
 
 }
