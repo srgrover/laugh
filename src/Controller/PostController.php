@@ -2,6 +2,7 @@
 namespace App\Controller;
 
 use App\Entity\Comment;
+use App\Entity\Liker;
 use App\Entity\Post;
 use App\Form\CommentType;
 use App\Form\PostType;
@@ -11,6 +12,7 @@ use Doctrine\ORM\ORMException;
 use http\Exception;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 ///**
@@ -116,6 +118,8 @@ class PostController extends AbstractController
 
     /**
      * @Route("/post/delete/{id}", name="confirm_delete_post", methods={"GET"})
+     * @param Post $post
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse
      */
     public function borrarDeVerdadAction(Post $post)
     {
@@ -135,6 +139,35 @@ class PostController extends AbstractController
         }
         return $this->redirectToRoute('homepage');
     }
+
+
+    /**
+     * @Route("/post/like/{id}", name="like_post", methods={"GET"})
+     * @param Request $request
+     */
+    public function likeAction(Request $request, Post $post)
+    {
+        $user = $this->getUser();
+
+        $em = $this->getDoctrine()->getManager();
+
+
+        $like = new Liker();
+        $like->setUser($user);
+        $like->setPost($post);
+
+        $em->persist($like);
+        try {
+            $em->flush();
+            $this->addFlash('estado', 'Te gusta esta entrada');
+        }
+        catch(Exception $e) {
+            $this->addFlash('error', 'Ups! Algo salió mal. Intentelo más tarde');
+        }
+
+        return $this->redirectToRoute('view_post', array('id' => $post->getId()));
+    }
+
 
 
 }

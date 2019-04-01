@@ -36,9 +36,9 @@
                         </a>
                     </h3>
                     <div class="cortar">
-                        <p>{{ post.post }}</p>
+                        <p>{{ post.post | read_more(post.post) }}</p>
                     </div>
-                    <a href="{{ path('view_post', {'id' : post.id}) }}" class="btn btn-link">Leer mas...</a>
+                    <a href="{{ path('view_post', {'id' : post.id}) }}" class="btn btn-light btn-sm">Leer más</a>
                     <div class="dropdown-divider pb-3"></div>
                 {% else %}
                     <h2>No hay entradas disponibles</h2>

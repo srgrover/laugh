@@ -82,7 +82,7 @@
 
             {# TODO: Añadir funcionalidad a stats likes #}
             <div class="list_stats_post">
-                <a href="#" class="text-muted">
+                <a href="{{ path('like_post', {'id' : post.id}) }}" class="text-muted">
                     <i class="fa fa-thumbs-up"></i>
                 </a>
                 <span class="text-muted font-weight-bold pr-3">5</span>
@@ -123,6 +123,7 @@
                             <small class="text-muted">Rating</small>
                             <span class="text-danger">{{ post.author.rating }}</span>
                         </div>
+                        {# TODO: Cambiar followers por el numero real de seguidores del usuario #}
                         <div class="box_stats_user text-center">
                             <small class="text-muted">Seguidores</small>
                             <span class="text-primary">15</span>
@@ -176,6 +177,7 @@
             {% endfor %}
             </div>
 
+            <hr>
 
             <h4 class="header_text pb-2">Deja un comentario</h4>
             {% if app.user %}
@@ -194,9 +196,6 @@
                     </h5>
                 </div>
             {% endif %}
-
-
-            {#<textarea name="uno" id="uno" cols="100%" rows="10"></textarea>#}
 
         </section>
         <aside class="col">

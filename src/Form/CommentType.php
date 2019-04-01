@@ -12,6 +12,7 @@ class CommentType extends AbstractType
         $builder
             ->add('comment', TextareaType::class, [
                 'label' => false,
+                'attr' => ['cols' => '100%', 'rows' => '10' ]
             ]);
     }
     public function configureOptions(OptionsResolver $resolver)
