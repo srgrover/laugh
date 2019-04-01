@@ -4,6 +4,7 @@ use Doctrine\ORM\Mapping as ORM;
 
 /**
  * @ORM\Entity
+ * @ORM\Entity(repositoryClass="App\Entity\Repository\LikeRepository")
  * @ORM\Table(name="liker")
  */
 class Liker

@@ -18,7 +18,8 @@ class PostType extends AbstractType
                 'attr' => ['style' => 'height:300px'],
             ])
             ->add('slug', TextType::class, [
-                'label' => 'Tags',
+                'label' => 'Etiquetas',
+                'attr' => ['data-role' => 'tagsinput'],
             ]);
     }
     public function configureOptions(OptionsResolver $resolver)

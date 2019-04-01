@@ -1,5 +1,5 @@
 $( document ).ready(function() {
-    console.log( "ready!" );
+    console.log( $('.btn_unlike').find('.badge').text() );
 
 
     /* MOSTAR TAGS EN view_post */
@@ -32,6 +32,8 @@ $( document ).ready(function() {
     $('.btn_like').unbind('click').click(function () {
         $(this).addClass("d-none");
         $(this).parent().find('.btn_unlike').removeClass("d-none");
+        var likes = parseInt($('.btn_like').find('.badge').text());
+        $('.btn_unlike').find('.badge').text(likes + 1);
         $.ajax({
             url: URL + '/post/like/' + $(this).attr("data-id"),
             type: 'GET',
@@ -43,6 +45,9 @@ $( document ).ready(function() {
     $('.btn_unlike').unbind('click').click(function () {
         $(this).addClass("d-none");
         $(this).parent().find('.btn_like').removeClass("d-none");
+        var likes = parseInt($('.btn_unlike').find('.badge').text());
+        $('.btn_like').find('.badge').text(likes - 1);
+
         $.ajax({
             url: URL + '/post/dislike/' + $(this).attr("data-id"),
             type: 'GET',

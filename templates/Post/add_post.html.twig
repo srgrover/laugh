@@ -1,5 +1,13 @@
 {% extends 'layout.html.twig' %}
 
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('css/tagsinput.css') }}"/>
+{% endblock %}
+
+{% block javascripts %}
+    <script src="{{ asset('js/tagsinput.js') }}"></script>
+{% endblock %}
+
 {% block content %}
     <div class="mt-5"></div>
 
@@ -14,10 +22,14 @@
             </h1>
 
             {{ form_start(formulario) }}
-            {{ form_widget(formulario) }}
+
+            {{ form_row(formulario.title) }}
+            {{ form_row(formulario.post) }}
+            {{ form_row(formulario.slug) }}
+
             <small id="emailHelp" class="form-text text-muted">Separa las etiquetas con comas.</small>
 
-            <div class="form-group">
+            <div class="form-group mt-4">
                 <button type="submit" name="enviar" class="btn btn-info">
                     Enviar a revisión
                 </button>

@@ -108,10 +108,13 @@ class PostController extends AbstractController
         }
 
         $comments = $this->getDoctrine()->getRepository(Comment::class)->getCommentsForBlog($post->getId());
+        $likes = $this->getDoctrine()->getRepository(Liker::class)->getLikesForBlog($post->getId());
+
 
         return $this->render('Post/view_post.html.twig', [
             'post' => $post,
             'comments' => $comments,
+            'likes' => $likes,
             'form_comment' => $form_comment->createView(),
         ]);
     }
