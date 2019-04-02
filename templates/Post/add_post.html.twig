@@ -33,7 +33,11 @@
                 <button type="submit" name="enviar" class="btn btn-info">
                     Enviar a revisión
                 </button>
-                <a href="{{ path('homepage') }}" class="btn btn-light">
+                <a href="{% if post.id %}
+                    {{ path('view_post', {'id' : post.id}) }}
+                {% else %}
+                    {{ path('homepage') }}
+                {% endif %}" class="btn btn-light">
                     Cancelar
                 </a>
             </div>

@@ -49,7 +49,7 @@ class PostController extends AbstractController
             try {
                 $em->flush();
                 $this->addFlash('estado', 'Cambios guardados con éxito');
-                return $this->redirectToRoute('homepage');
+                return $this->redirectToRoute('view_post', array('id' => $post->getId()));
             }
             catch(Exception $e) {
                 $this->addFlash('error', 'No se han podido guardar los cambios');

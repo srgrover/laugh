@@ -1,11 +1,8 @@
 $( document ).ready(function() {
-    console.log( $('.btn_unlike').find('.badge').text() );
-
-
     /* MOSTAR TAGS EN view_post */
     var tags_section = $('.tags_section');
     var tags_hide = $('.tags_hide');
-    var tags = $.trim(tags_hide.text()).split("-");
+    var tags = $.trim(tags_hide.text()).split(",");
 
     tags.forEach(function (tag) {
         var ancla = $('<a/>', {
@@ -55,5 +52,22 @@ $( document ).ready(function() {
             }
         })
     });
+
+    /* HIDE/SHOW OPCIONES DE COMENTARIO */
+    $('.box_comment').mouseover(function () {
+        $(this).find('.options_comment').addClass('d-inline');
+    }).mouseout(function () {
+        $(this).find('.options_comment').removeClass('d-inline');
+    });
+
+
+
+
+    $('.btn_reply').click(function () {
+        var user = $.trim($(this).parent().parent().parent().find('.comment_author').text());
+        console.log(user);
+        $('#comment_comment').text('@'+user+' ');
+    });
+
 
 });
