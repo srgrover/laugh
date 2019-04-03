@@ -24,6 +24,11 @@ services:
         resource: '../src/Controller'
         tags: ['controller.service_arguments']
 
+    twig.extension.intl:
+        class: Twig_Extensions_Extension_Intl
+        tags:
+            - { name: twig.extension }
+
     App\Twig\TwigExtension:
         tags:
             - { name: twig.extension }

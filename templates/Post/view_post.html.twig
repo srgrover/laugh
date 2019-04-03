@@ -174,14 +174,16 @@
                                 {{ comment.author }}
                             </span>
                         </a>
-                        <small class="text-muted mr-3">{{ comment.created | date("F jS, Y \\a \\l\\a\\s g:ia") }}</small>
+                        <small class="text-muted mr-3">{{ comment.created | date | localizeddate('long', 'none', 'es') }}</small>
                         <div class="options_comment d-none">
                             {% if app.user == comment.author %}
-                                <small class="mr-3">
-                                    <a href="#">
-                                        <i class="fa fa-trash"></i>
-                                    </a>
-                                </small>
+                                <div class="comment_delete d-inline">
+                                    <small class="mr-3">
+                                        <a href="#" id="btn_delete_comment" data-toggle="modal" data-target="#modalDeleteComment" data-id="{{ comment.id }}">
+                                            <i class="fa fa-trash"></i>
+                                        </a>
+                                    </small>
+                                </div>
                             {% endif %}
                             <small class="reply_space">
                                 <a href="#comments" class="btn_reply">
@@ -191,8 +193,10 @@
                             </small>
                         </div>
                     </div>
+                    <div class="content_comment">
+                        <p class="col-12 pl-4">{{ comment.comment }}</p>
+                    </div>
 
-                    <p class="col-12 pl-4">{{ comment.comment }}</p>
                 </div>
             {% else %}
                 <div class="mt-3">
