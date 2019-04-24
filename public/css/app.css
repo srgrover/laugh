@@ -71,7 +71,7 @@ ul li {
 
 /* Headers */
 .header_text {
-  padding: 5% 0;
+  padding: 1.5em 0;
 }
 
 .header_tabs {
@@ -103,7 +103,7 @@ a:hover {
 }
 
 .header_feed .header_tabs a {
-  padding: 4.5% 0;
+  padding: 1.4em 0;
 }
 .header_feed .header_tabs a:nth-child(1) {
   margin-right: 15px;
@@ -144,19 +144,19 @@ a:hover {
 
 /* Botones */
 .btn_border_primary {
-  border: 1px solid #17a2b8;
+  border: 2px solid #17a2b8;
   margin-right: 5px;
   color: #17a2b8;
 }
 
 .btn_border_success {
-  border: 1px solid #58D68D;
+  border: 2px solid #58D68D;
   margin-right: 5px;
   color: #58D68D;
 }
 
 .btn_border_muted {
-  border: 1px solid #333333;
+  border: 2px solid #333333;
   margin-right: 5px;
   color: #333333;
 }
@@ -167,8 +167,9 @@ a:hover {
 
 .btn_user {
   margin-right: 5px;
-  border: 1px solid #b58ba9;
+  border: 2px solid #b58ba9;
   color: #b58ba9;
+  padding: 10px;
 }
 
 .new_post {
@@ -184,6 +185,14 @@ a:hover {
 /* Text */
 .text_post {
   height: 300px;
+}
+
+.options_comment a {
+  color: #17a2b8;
+}
+
+.options_comment a:hover {
+  color: #0c525d;
 }
 
 .span_karma small, .my_karma small {

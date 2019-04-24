@@ -53,58 +53,58 @@ $( document ).ready(function() {
         })
     });
 
-    /* HIDE/SHOW OPCIONES DE COMENTARIO */
-    $('.box_comment').mouseover(function () {
-        $(this).find('.options_comment').addClass('d-inline');
-    }).mouseout(function () {
-        $(this).find('.options_comment').removeClass('d-inline');
-    });
-
-
-
-
-    $('.btn_reply').click(function () {
-        var user = $.trim($(this).parent().parent().parent().find('.comment_author').text());
-        console.log(user);
-        $('#comment_comment').text('@'+user+' ');
-    });
-
-
-
-
-
-
-    $('#btn_delete_comment').click(function () {
-        var section_delete = $(this).parent().parent().parent().parent().parent().find('.content_comment');
-        var content_delete_comment = section_delete.html();
-
-        /* CHANGE CONTENT */
-        var p_messaje = $('<p/>', {
-            'html' : '¿Estás seguro de eliminar este comentario?',
-            'class' : 'col-12 text-center'
-        });
-        var btn_delete_def = $('<a/>', {
-            'html' : 'Eliminar',
-            'class' : 'btn btn-danger btn-sm',
-            'href' : URL + '/comment/delete/' + $(this).attr("data-id")
-        });
-
-        /* CANCEL DELETE */
-        var btn_cancel_delete = $('<button/>', {
-            'html' : 'Cancelar',
-            'class' : 'btn btn-light btn-sm mr-3 border'
-        });
-        btn_cancel_delete.click(function () {
-            backSectionDelete(content_delete_comment, section_delete);
-        });
-
-        section_delete.addClass('text-center pt-3 pb-3 rounded bg-light').empty();
-        section_delete.append(p_messaje, btn_cancel_delete, btn_delete_def);
-    });
-
-    function backSectionDelete(content, object) {
-        object.removeClass('text-center pt-3 pb-3 rounded bg-light').empty().html(content);
-    }
+    // /* HIDE/SHOW OPCIONES DE COMENTARIO */
+    // $('.box_comment').mouseover(function () {
+    //     $(this).find('.options_comment').addClass('d-inline');
+    // }).mouseout(function () {
+    //     $(this).find('.options_comment').removeClass('d-inline');
+    // });
+    //
+    //
+    //
+    //
+    // $('.btn_reply').click(function () {
+    //     var user = $.trim($(this).parent().parent().parent().find('.comment_author').text());
+    //     console.log(user);
+    //     $('#comment_comment').text('@'+user+' ');
+    // });
+    //
+    //
+    //
+    //
+    //
+    //
+    // $('#btn_delete_comment').click(function () {
+    //     var section_delete = $(this).parent().parent().parent().parent().parent().find('.content_comment');
+    //     var content_delete_comment = section_delete.html();
+    //
+    //     /* CHANGE CONTENT */
+    //     var p_messaje = $('<p/>', {
+    //         'html' : '¿Estás seguro de eliminar este comentario?',
+    //         'class' : 'col-12 text-center'
+    //     });
+    //     var btn_delete_def = $('<a/>', {
+    //         'html' : 'Eliminar',
+    //         'class' : 'btn btn-danger btn-sm',
+    //         'href' : URL + '/comment/delete/' + $(this).attr("data-id")
+    //     });
+    //
+    //     /* CANCEL DELETE */
+    //     var btn_cancel_delete = $('<button/>', {
+    //         'html' : 'Cancelar',
+    //         'class' : 'btn btn-light btn-sm mr-3 border'
+    //     });
+    //     btn_cancel_delete.click(function () {
+    //         backSectionDelete(content_delete_comment, section_delete);
+    //     });
+    //
+    //     section_delete.addClass('text-center pt-3 pb-3 rounded bg-light').empty();
+    //     section_delete.append(p_messaje, btn_cancel_delete, btn_delete_def);
+    // });
+    //
+    // function backSectionDelete(content, object) {
+    //     object.removeClass('text-center pt-3 pb-3 rounded bg-light').empty().html(content);
+    // }
 
 
 
