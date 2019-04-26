@@ -2,6 +2,7 @@
 namespace App\Controller;
 
 use App\Entity\User;
+use App\Form\ProfileType;
 use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\OptimisticLockException;
 use Doctrine\ORM\ORMException;
@@ -55,6 +56,49 @@ class UserController extends AbstractController
 
         return $this->render('User/profile.html.twig', [
             'user'  => $usuario
+        ]);
+    }
+
+    /**
+     * @Route("/user/{username}/settings", name="profile_settings")
+     * @param Request $request
+     * @param null $username
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function perfilSetingsAction(Request $request, $username = null){
+        /** @var EntityManager $em*/
+        $em = $this->getDoctrine()->getManager();
+        if($username != null){
+            $usuario_repo = $em->getRepository('App\Entity\User');
+            $usuario = $usuario_repo->findOneBy(array('username' => $username));
+        }else{
+            $usuario = $this->getUser();
+        }
+
+        //Si el usuario está vacío o no está logueado se redirige al login
+        if(empty($usuario) || !is_object($usuario)){
+            return $this->redirect($this->generateUrl('fos_user_security_login'));
+        }
+
+        $form = $this->createForm(ProfileType::class, $usuario);  //Crea el formulario
+        $form->handleRequest($request);    //Informacion de request se guarda aqui
+
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            try {
+                $em->persist($usuario);
+                $em->flush();
+                $this->addFlash('estado', 'Los cambios se han guardado');
+                return $this->redirectToRoute('profile', array('username' => $usuario->getUsername()));
+            }
+            catch (ORMException $e) {
+                $this->addFlash('error', 'Ups!. Algo ha salido mal. Intentalo de nuevo mas tarde.');
+            }
+        }
+
+        return $this->render('User/profile_settings.html.twig', [
+            'user'  => $usuario,
+            'form' => $form->createView()
         ]);
     }
 

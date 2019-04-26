@@ -44,12 +44,22 @@ class User extends BaseUser
     protected $register_at;
 
     /**
+     * @ORM\Column(type="datetime", nullable=true)
+     */
+    protected $born;
+
+    /**
+     * @ORM\Column(type="text", nullable=true)
+     */
+    protected $gender;
+
+    /**
      * @ORM\Column(type="boolean", nullable=false)
      */
     protected $admin = false;
 
     /**
-     * @ORM\OneToMany(targetEntity="Post", mappedBy="user")
+     * @ORM\OneToMany(targetEntity="Post", mappedBy="author")
      */
     protected $posts;
 
@@ -222,5 +232,39 @@ class User extends BaseUser
     {
         $this->register_at = $register_at;
     }
+
+    /**
+     * @return mixed
+     */
+    public function getBorn()
+    {
+        return $this->born;
+    }
+
+    /**
+     * @param mixed $born
+     */
+    public function setBorn($born): void
+    {
+        $this->born = $born;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getGender()
+    {
+        return $this->gender;
+    }
+
+    /**
+     * @param mixed $gender
+     */
+    public function setGender($gender): void
+    {
+        $this->gender = $gender;
+    }
+
+
 
 }

@@ -207,15 +207,15 @@ a:hover{
 }
 
 .span_karma, .my_karma{
+  color: $secondary;
   small{
-    color: $secondary;
     font-weight: bold;
   }
 }
 
 .span_rating, .my_rating{
-  small{
     color: $purple;
+  small {
     font-weight: bold;
   }
 }
@@ -230,8 +230,10 @@ a:hover{
 
 
 
-
-
+/*********** Correcciones **************/
+legend.col-form-label.required {
+  padding-top: 0;
+}
 
 
 

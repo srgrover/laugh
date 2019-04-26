@@ -195,14 +195,23 @@ a:hover {
   color: #0c525d;
 }
 
-.span_karma small, .my_karma small {
+.span_karma, .my_karma {
   color: #7abd85;
+}
+.span_karma small, .my_karma small {
   font-weight: bold;
 }
 
-.span_rating small, .my_rating small {
+.span_rating, .my_rating {
   color: #b58ba9;
+}
+.span_rating small, .my_rating small {
   font-weight: bold;
+}
+
+/*********** Correcciones **************/
+legend.col-form-label.required {
+  padding-top: 0;
 }
 
 /* -----

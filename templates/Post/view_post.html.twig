@@ -13,11 +13,11 @@
                         </svg>
                     </a>
                     <a href="#" class="post_username">{{ post.author.username }}</a>
-                    <small>{{ post.created | date("F jS \\a \\l\\a\\s g:ia") }}</small>
+                    <small> - {{ post.created | date | localizeddate('long', 'none', 'es') }}</small>
                 </div>
                 <div class="col text-right">
                     <span class="list_stats mr-2">
-                        <i class="fa fa-eye"></i>
+                        <i class="far fa-eye"></i>
                         {{ post.views }}
                     </span>
 
@@ -105,12 +105,12 @@
 
 
                 <span class="text-muted font-weight-bold pr-3 ml-3">
-                    <i class="fa fa-eye"></i>
+                    <i class="far fa-eye"></i>
                     {{ post.views }}
                 </span>
 
                 <a href="#comments" title="Comentarios" class="text-muted">
-                    <i class="fa fa-comment-alt"></i>
+                    <i class="far fa-comment-alt"></i>
                     Comentarios
                 </a>
             </div>
@@ -149,7 +149,7 @@
 
                 <div class="col col-md-5 text-right">
                     <a href="#" class="btn btn-light btn_border_muted btn-sm">
-                        <i class="fa fa-envelope"></i>
+                        <i class="far fa-envelope"></i>
                         Enviar mensaje
                     </a>
                     {% if app.user != post.author %}
@@ -180,7 +180,7 @@
                                 <div class="comment_delete d-inline">
                                     <small class="mr-3">
                                         <a href="#" id="btn_delete_comment" data-toggle="modal" data-target="#modalDelComment{{ comment.id }}" data-id="{{ comment.id }}">
-                                            <i class="fa fa-trash"></i>
+                                            <i class="far fa-trash-alt"></i>
                                         </a>
                                     </small>
                                     <div class="modal fade" id="modalDelComment{{ comment.id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
@@ -218,7 +218,7 @@
                             {% endif %}
                             <small class="reply_space">
                                 <a href="#comments" class="btn_reply">
-                                    <i class="fa fa-reply"></i>
+                                    <i class="far fa-reply"></i>
                                     Reply
                                 </a>
                             </small>
