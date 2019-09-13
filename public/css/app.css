@@ -34,6 +34,8 @@ ul li {
   background-color: #f7f7f7;
   width: 100%;
   position: relative;
+  box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.14);
+  white-space: normal;
 }
 
 .box_primary {
@@ -207,6 +209,31 @@ a:hover {
 }
 .span_rating small, .my_rating small {
   font-weight: bold;
+}
+
+.giant {
+  font-size: 150px;
+}
+
+/* FORMS */
+.form_search {
+  background: #ffffff;
+  border: 1px solid #f7f7f7;
+  border-radius: 3px;
+}
+.form_search form #s {
+  border: none;
+}
+.form_search form #s:focus {
+  border: none !important;
+  box-shadow: none !important;
+}
+.form_search form #s:active {
+  border: none !important;
+  box-shadow: none !important;
+}
+.form_search form button i {
+  color: #17a2b8;
 }
 
 /*********** Correcciones **************/

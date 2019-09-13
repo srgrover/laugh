@@ -36,6 +36,8 @@ ul{
 .box_secondary {
   @include box($lighness, 100%);
   position: relative;
+  box-shadow: 0 1px 4px 0 rgba(0,0,0,0.14);
+  white-space: normal;
 }
 
 .box_primary {
@@ -220,9 +222,35 @@ a:hover{
   }
 }
 
+.giant{
+  font-size: 150px;
+}
 
 
-
+/* FORMS */
+.form_search{
+  background: #ffffff;
+  border: 1px solid $lighness;
+  border-radius: 3px;
+  form{
+    #s{
+      border: none;
+    }
+    #s:focus{
+      border: none !important;
+      box-shadow: none !important;
+    }
+    #s:active{
+      border: none !important;
+      box-shadow: none !important;
+    }
+    button{
+      i{
+        color: $primary;
+      }
+    }
+  }
+}
 
 
 
@@ -262,6 +290,7 @@ SVG Icons - svgicons.sparkk.fr
   stroke: $purple;
   stroke-width: 1;
 }
+
 
 
 

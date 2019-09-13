@@ -67,12 +67,20 @@ class UserController extends AbstractController
      */
     public function perfilSetingsAction(Request $request, $username = null){
         /** @var EntityManager $em*/
+
+
+
+
         $em = $this->getDoctrine()->getManager();
         if($username != null){
             $usuario_repo = $em->getRepository('App\Entity\User');
             $usuario = $usuario_repo->findOneBy(array('username' => $username));
         }else{
             $usuario = $this->getUser();
+        }
+
+        if($usuario != $this->getUser()){
+            return $this->redirect($this->generateUrl('forbidden'));
         }
 
         //Si el usuario está vacío o no está logueado se redirige al login

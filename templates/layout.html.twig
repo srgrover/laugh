@@ -6,7 +6,7 @@
         <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
             <div class="container">
                 <a class="navbar-brand" href="{{ path('homepage') }}">
-                    DE <span class="font-weight-bold">SEMANA SANTA</span>
+                    <strong>OH!</strong> YES
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -35,9 +35,16 @@
                             <a class="nav-link disabled" href="#">Disabled</a>
                         </li>
                     </ul>
-                    <button class="btn btn-link">
-                        <i class="fa fa-search text-muted"></i>
-                    </button>
+                    <div class="form_search mr-3">
+                        <form action="{{ path('search') }}" method="GET" name="form_search">
+                            <input type="text" id="s" name="s" placeholder="Buscar" class="pl-3">
+                            <button type="submit" class="btn btn-link" style="padding: .20rem .5rem;">
+                                <i class="fa fa-search"></i>
+                            </button>
+                        </form>
+                    </div>
+
+
                     {% if app.user %}
                         <a class="btn btn-light btn-sm btn_border_primary" href="{{ path('new_post') }}">Nuevo post</a>
                         <div class="btn-group">
@@ -67,12 +74,11 @@
             </div>
         </nav>
     {% endblock %}
-    <div class="container">
         <div class="nav_blank"></div>
         {% if app.session.flashBag.has('estado') %}
             {% set mensajes = app.session.flashBag.get('estado') %}
             {% for mensaje in mensajes %}
-                <div class="alert alert-success alert-dismissible mt-2">
+                <div class="alert alert-success alert-dismissible text-center">
                     <button type="button" class="close" data-dismiss="alert" aria-label="Cerrar"><span aria-hidden="true">&times;</span></button>
                     {{ mensaje }}
                 </div>
@@ -81,14 +87,14 @@
         {% if app.session.flashBag.has('error') %}
             {% set mensajes = app.session.flashBag.get('error') %}
             {% for mensaje in mensajes %}
-                <div class="alert alert-danger alert-dismissible mt-2">
+                <div class="alert alert-danger alert-dismissible text-center">
                     <button type="button" class="close" data-dismiss="alert" aria-label="Cerrar"><span aria-hidden="true">&times;</span></button>
                     {{ mensaje }}
                 </div>
             {% endfor %}
         {% endif %}
-        <section class="mb-5">
+        <section class="mb-5 container">
         {% block content %}{% endblock %}
         </section>
-    </div>
+
 {% endblock %}

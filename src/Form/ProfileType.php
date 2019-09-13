@@ -38,8 +38,8 @@ class ProfileType extends AbstractType
             ->add('gender', ChoiceType::class, [
                 'label' => 'Género',
                 'choices'  => [
-                    'Hombre' => 'Hombre',
-                    'Mujer' => 'Mujer',
+                    'Hombre' => 'H',
+                    'Mujer' => 'M',
                 ],
                 'attr' => [
                     'class' => 'form-control'
